@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#000000">
 
-    <ImageView
+
+<ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
@@ -20,11 +22,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="154dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/the_grand_hotels"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="22dp"
+        android:text="The Great Vee Hotels"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
     <TextView
@@ -34,12 +36,21 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="221dp"
-        android:layout_marginEnd="102dp"
-        android:text="Book your stay today"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="101dp"
+        android:text="@string/book_your_stay_today"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic|bold" />
+
+    <Button
+        android:id="@+id/bookNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAllCaps="false"
+        android:background="@color/mirage_dark"
+        android:text="@string/book_now" />
 
 
 </RelativeLayout>
