@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String location = mLocationEditText.getText().toString();//get the text from the edit text
                 Intent intent = new Intent(MainActivity.this, BookingActivity.class);//create an intent to open the BookingActivity
+                intent.putExtra("location", location);//put the location into the intent
                 startActivity(intent);//start the activity
             }
         });
