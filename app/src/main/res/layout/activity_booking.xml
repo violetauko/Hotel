@@ -11,32 +11,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/locationTextView"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
+
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="339dp"
-        android:layout_height="172dp"
+        android:layout_width="347dp"
+        android:layout_height="167dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="67dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="52dp"
         app:srcCompat="@drawable/hotel4" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="139dp"
-        android:layout_marginTop="249dp"
+        android:layout_marginTop="221dp"
+        android:textAllCaps="false"
         android:text="Book" />
-
 
     <TextView
         android:id="@+id/HotelName"
@@ -45,8 +46,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="138dp"
-        android:layout_marginTop="143dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="166dp"
         android:text="Pendo Hotel"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
@@ -59,11 +60,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="27dp"
-        android:layout_marginBottom="275dp"
+        android:layout_marginBottom="265dp"
         app:srcCompat="@drawable/hotel7" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/book1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -88,16 +89,17 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="368dp"
-        android:layout_height="149dp"
+        android:layout_width="375dp"
+        android:layout_height="162dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginBottom="62dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="53dp"
         app:srcCompat="@drawable/hotel8" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/book2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
