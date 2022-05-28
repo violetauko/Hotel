@@ -15,12 +15,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBookNow = findViewById(R.id.bookNow);
-        mBookNow.setOnClickListener(new View.OnClickListener() {
+        mBookNow = findViewById(R.id.bookNow);//find the button in the activity_main.xml
+        mBookNow.setOnClickListener(new View.OnClickListener() {//set the onclick listener
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, BookingActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, BookingActivity.class);//create an intent to open the BookingActivity
+                startActivity(intent);//start the activity
             }
         });
     }
