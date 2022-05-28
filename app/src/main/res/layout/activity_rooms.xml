@@ -19,7 +19,8 @@
         android:layout_marginTop="17dp"
         android:text="Here are the available rooms"
         android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/aclonica"
         android:textStyle="bold" />
 
     <ListView
