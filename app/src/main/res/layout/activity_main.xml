@@ -8,12 +8,14 @@
     android:background="#000000">
 
 
-<ImageView
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:src="@drawable/hotel3"
-        android:scaleType="centerCrop" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/hotel3" />
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -44,13 +46,24 @@
         android:textStyle="italic|bold" />
 
     <Button
-        android:id="@+id/bookNow"
+        android:id="@+id/findHotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textAllCaps="false"
         android:background="@color/mirage_dark"
-        android:text="@string/book_now" />
+        android:text="Find Hotel" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="349dp"
+        android:layout_marginEnd="13dp"
+        android:text="Don't have a place to stay? Find our hotels wherever you are." />
 
 
 </RelativeLayout>
