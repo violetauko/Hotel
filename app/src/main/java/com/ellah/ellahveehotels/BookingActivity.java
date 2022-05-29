@@ -10,19 +10,22 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class BookingActivity extends AppCompatActivity {
-    private TextView mLocationTextView;
-    private Button mBook;
-    private Button mBook1;
-    private Button mBook2;
+    @BindView(R.id.locationTextView) TextView mLocationTextView;
+    @BindView(R.id.book) Button mBook;;
+    @BindView(R.id.book1) Button mBook1;
+    @BindView(R.id.book2) Button mBook2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+        ButterKnife.bind(this);
 
-        mLocationTextView = findViewById(R.id.locationTextView);
-        mBook = findViewById(R.id.book);
+
         mBook.setOnClickListener(new View.OnClickListener() {//set the onclick listener
             @Override
             public void onClick(View v) {
@@ -30,7 +33,6 @@ public class BookingActivity extends AppCompatActivity {
                 startActivity(intent);//start the activity
             }
         });
-        mBook1 = findViewById(R.id.book1);
         mBook1.setOnClickListener(new View.OnClickListener() {//set the onclick listener
             @Override
             public void onClick(View v) {
@@ -38,7 +40,6 @@ public class BookingActivity extends AppCompatActivity {
                 startActivity(intent);//start the activity
             }
         });
-        mBook2 = findViewById(R.id.book2);
         mBook2.setOnClickListener(new View.OnClickListener() {//set the onclick listener
             @Override
             public void onClick(View v) {
