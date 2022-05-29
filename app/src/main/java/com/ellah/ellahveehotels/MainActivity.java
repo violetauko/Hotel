@@ -8,17 +8,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Button mFindHotel;
-    private EditText mLocationEditText;
+    @BindView(R.id.locationEditText) EditText mLocationEditText;//bind the locationEditText
+    @BindView(R.id.findHotel) Button mFindHotel;//bind the findHotel button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);//bind the activity
 
-        mLocationEditText = findViewById(R.id.locationEditText);
-        mFindHotel = findViewById(R.id.findHotel);//find the button in the activity_main.xml
         mFindHotel.setOnClickListener(new View.OnClickListener() {//set the onclick listener
             @Override
             public void onClick(View v) {
