@@ -10,15 +10,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class RoomsActivity extends AppCompatActivity {
-    private ListView mListView;
+    @BindView(R.id.listView) ListView mListView;
+
     private String [] rooms = {"GVH 201", "GVH 202", "GVH 203", "GVH 204", "GVH 205", "GVH 206", "GVH 307", "GVH 308", "GVH 109", "GVH 110"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rooms);
-
-        mListView = findViewById(R.id.listView);
+        ButterKnife.bind(this);
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, rooms);
         mListView.setAdapter(adapter);
