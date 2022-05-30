@@ -1,4 +1,4 @@
-## Title
+# Hotel 
 This project is about finding hotels that are near a given location, and then booking them for a given period of time.
 There is also a feature that allows you to find a car that is near a given location, and then book it for a given period of time.
 
