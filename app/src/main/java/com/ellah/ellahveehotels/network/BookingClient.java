@@ -1,7 +1,9 @@
-package com.ellah.ellahveehotels;
+package com.ellah.ellahveehotels.network;
 
 import static com.ellah.ellahveehotels.Constants.BOOKING_API_KEY;
 import static com.ellah.ellahveehotels.Constants.BOOKING_BASE_URL;
+
+import com.ellah.ellahveehotels.network.BookingApi;
 
 import java.io.IOException;
 
@@ -23,8 +25,7 @@ public class BookingClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request newRequest  = chain.request().newBuilder()
-                                    .addHeader("X-RapidAPI-Host", "booking-com.p.rapidapi.com")
-                                    .addHeader("X-RapidAPI-Key", BOOKING_API_KEY)
+                                    .addHeader("Authorization", BOOKING_API_KEY)
                                     .build();
                             return chain.proceed(newRequest);//proceeds with the request
                         }

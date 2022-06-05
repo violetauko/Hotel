@@ -4,8 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity"
-    android:background="#181D2D">
+    tools:context=".ui.BookingActivity">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/locationTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,119 +31,11 @@
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true" />
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="347dp"
-        android:layout_height="167dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="52dp"
-        app:srcCompat="@drawable/hotel4" />
-
-    <Button
-        android:id="@+id/book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="139dp"
-        android:layout_marginTop="221dp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/aclonica"
-        android:background="@color/teal_700"
-        android:text="Book" />
-
     <TextView
-        android:id="@+id/HotelName"
+        android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="166dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Pendo Hotel"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="323dp"
-        android:layout_height="144dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginBottom="265dp"
-        app:srcCompat="@drawable/hotel7" />
-
-    <Button
-        android:id="@+id/book1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="147dp"
-        android:layout_marginBottom="217dp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/aclonica"
-        android:background="@color/teal_700"
-        android:text="Book" />
-
-    <TextView
-        android:id="@+id/HotelName1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="383dp"
-        android:fontFamily="@font/aclonica"
-        android:text="GateWay Hotel"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="375dp"
-        android:layout_height="162dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="53dp"
-        app:srcCompat="@drawable/hotel8" />
-
-    <Button
-        android:id="@+id/book2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="6dp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/aclonica"
-        android:background="@color/teal_700"
-        android:text="Book" />
-
-    <TextView
-        android:id="@+id/HotelName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="581dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Salama Hotel"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
-
-
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -3,14 +3,13 @@ package com.ellah.ellahveehotels;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import android.content.Intent;
+import com.ellah.ellahveehotels.ui.MainActivity;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.shadows.ShadowActivity;
 
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
