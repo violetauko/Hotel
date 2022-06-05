@@ -12,6 +12,7 @@ public class HotelsArrayAdapter extends ArrayAdapter{
         private String[] mHotels;
 
 
+
         public HotelsArrayAdapter(Context mContext, int resource, String[] mHotels) {
             super(mContext, resource);
             this.mContext = mContext;

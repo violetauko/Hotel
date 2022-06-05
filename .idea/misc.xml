@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_rooms.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/hotel_list_item.xml" value="0.25" />
       </map>
     </option>
   </component>
