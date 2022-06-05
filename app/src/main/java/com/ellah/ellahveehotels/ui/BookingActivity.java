@@ -1,6 +1,8 @@
 package com.ellah.ellahveehotels.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ellah.ellahveehotels.R;
+import com.ellah.ellahveehotels.adapters.HotelListAdapter;
 import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.models.HotelSearchResponse;
 import com.ellah.ellahveehotels.network.BookingApi;
@@ -25,13 +28,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookingActivity extends AppCompatActivity {
-    @BindView(R.id.locationTextView)
-    TextView mLocationTextView;
-    @BindView(R.id.listView)
-    ListView mListView;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    private HotelListAdapter mAdapter;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+
+
+    public List<Business> hotels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +44,22 @@ public class BookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking);
         ButterKnife.bind(this);
 
-        mListView = (ListView) findViewById(R.id.listView);
-        mLocationTextView = (TextView) findViewById(R.id.locationTextView);
-
         Intent intent = getIntent();
         String location = getIntent().getStringExtra("location");
-        mLocationTextView.setText("Here are all the restaurants near: " + location);
 
         BookingApi client = BookingClient.getClient();
         Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
         call.enqueue(new Callback<HotelSearchResponse>() {
             @Override
             public void onResponse(Call<HotelSearchResponse> call, Response<HotelSearchResponse> response) {
-                if (response.isSuccessful()) {
-                    List<Business> hotelsList = response.body().getBusinesses();
-                    String[] hotels = new String[hotelsList.size()];
-
-                    for (int i = 0; i < hotels.length; i++) {
-                        hotels[i] = hotelsList.get(i).getName();
-                    }
-
-                    ArrayAdapter adapter = new ArrayAdapter(BookingActivity.this, android.R.layout.simple_list_item_1, hotels);
-                    mListView.setAdapter(adapter);
+                hideProgressBar();
+if (response.isSuccessful()) {
+                    hotels = response.body().getBusinesses();
+                    mAdapter = new HotelListAdapter(BookingActivity.this, hotels);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BookingActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
                     showHotels();
                 } else {
@@ -88,8 +87,7 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     private void showHotels() {
-        mListView.setVisibility(View.VISIBLE);
-        mLocationTextView.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {

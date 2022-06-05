@@ -48,7 +48,6 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
             mNameLabel.setText(hotel.getName());
             mRatingLabel.setText(String.valueOf(hotel.getRating()));
             mCategoriesLabel.setText(hotel.getCategories().toString());//
-            Picasso.get().load(hotel.getImageUrl()).into(mImageLabel);
         }
     }
 
