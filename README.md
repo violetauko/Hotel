@@ -10,7 +10,9 @@ Emulator or device must be connected to the computer.
 
 ## Built With
 Built with Android Studio. 
+
 Java
+
 XML
 
 ## Authors
