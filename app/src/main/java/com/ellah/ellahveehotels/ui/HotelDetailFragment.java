@@ -1,5 +1,7 @@
 package com.ellah.ellahveehotels.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -28,7 +30,7 @@ import butterknife.ButterKnife;
  * Use the {@link HotelDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HotelDetailFragment extends Fragment {
+public class HotelDetailFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.hotelImageView)
     ImageView mImageLabel;
     @BindView(R.id.hotelNameTextView)
@@ -38,6 +40,7 @@ public class HotelDetailFragment extends Fragment {
     @BindView(R.id.phoneTextView) TextView mPhoneLabel;
     @BindView(R.id.addressTextView) TextView mAddressLabel;
     @BindView(R.id.priceButton) TextView mpriceButton;
+    @BindView(R.id.emailTextView) TextView mEmail;
 
     private Business mHotel;
     public HotelDetailFragment() {
@@ -76,6 +79,33 @@ public class HotelDetailFragment extends Fragment {
         mRatingLabel.setText(Double.toString(mHotel.getRating()));
         mPhoneLabel.setText(mHotel.getPhone());
         mAddressLabel.setText(mHotel.getLocation().toString());
+        mAddressLabel.setOnClickListener(this);
+        mPhoneLabel.setOnClickListener(this);
+        mWebsiteLabel.setOnClickListener(this);
+        mEmail.setOnClickListener(this);
         return view;
     }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mHotel.getUrl()));
+            startActivity(webIntent);
+        }
+        if (view == mPhoneLabel) {
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:" + mHotel.getPhone()));
+            startActivity(phoneIntent);
+        }
+        if (view == mAddressLabel) {
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:" + mHotel.getCoordinates().getLatitude()
+                            + "," + mHotel.getCoordinates().getLongitude()
+                            + "?q=(" + mHotel.getName() + ")"));
+            startActivity(mapIntent);
+        }
     }
+
+    }
+}
