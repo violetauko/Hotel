@@ -52,13 +52,13 @@
             tools:ignore="NotSibling" />
 
         <Button
-            android:id="@+id/descButton"
+            android:id="@+id/reviewButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawablePadding="4dp"
             android:backgroundTint="@color/teal_700"
-            android:text="Description"
+            android:text="Reviews"
             android:textAllCaps="false"
             android:textSize="15sp"
             android:textStyle="bold" />
