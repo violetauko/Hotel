@@ -1,10 +1,6 @@
 # Hotel 
 This project is about finding hotels that are near a given location, navigating into the hotel page where one can decide to take reservation.
 
-Topics
-Resources
-
-
 ## Getting Started
 git clone https://github.com/violetauko/Hotel.git.
 
