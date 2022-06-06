@@ -42,7 +42,7 @@ public class Business {
     private Coordinates coordinates;
     @SerializedName("transactions")
     @Expose
-    private List<Object> transactions = null;
+    private List<String> transactions = null;
     @SerializedName("price")
     @Expose
     private String price;
@@ -85,7 +85,7 @@ public class Business {
      * @param id
      * @param categories
      */
-    public Business(String id, String alias, String name, String imageUrl, Boolean isClosed, String url, Integer reviewCount, List<Category> categories, Double rating, Coordinates coordinates, List<Object> transactions, String price, Location location, String phone, String displayPhone, Double distance) {
+    public Business(String id, String alias, String name, String imageUrl, Boolean isClosed, String url, Integer reviewCount, List<Category> categories, Double rating, Coordinates coordinates, List<String> transactions, String price, Location location, String phone, String displayPhone, Double distance) {
         super();
         this.id = id;
         this.alias = alias;
@@ -185,11 +185,11 @@ public class Business {
         this.coordinates = coordinates;
     }
 
-    public List<Object> getTransactions() {
+    public List<String> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Object> transactions) {
+    public void setTransactions(List<String> transactions) {
         this.transactions = transactions;
     }
 

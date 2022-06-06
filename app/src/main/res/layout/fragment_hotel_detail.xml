@@ -16,17 +16,17 @@
             android:layout_height="wrap_content"
             android:text="Hotel Name"
             android:textColor="@color/teal_700"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="10dp"
-            android:textSize="40sp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="270dp"
         android:id="@+id/hotelImageView"
         android:src="@drawable/hotel6"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:scaleType="centerCrop" />
@@ -78,7 +78,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingLeft="30dp"
-            android:paddingTop="20dp"
+            android:paddingTop="5dp"
             android:paddingRight="30dp">
 
             <TextView

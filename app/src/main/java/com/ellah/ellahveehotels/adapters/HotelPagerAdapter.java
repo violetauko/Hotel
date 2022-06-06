@@ -13,9 +13,9 @@ import java.util.List;
 public class HotelPagerAdapter extends FragmentPagerAdapter {
     private List<Business> mHotels;
 
-    public HotelPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Business> restaurants) {
+    public HotelPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Business> hotels) {
         super(fm, behavior);
-        mHotels = restaurants;
+        mHotels = hotels;
     }
 
     @NonNull
