@@ -1,6 +1,8 @@
 
 package com.ellah.ellahveehotels.models;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -127,6 +129,12 @@ public class Location {
 
     public void setDisplayAddress(List<String> displayAddress) {
         this.displayAddress = displayAddress;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("%s, %s, %s %s", this.address1, this.city, this.state, this.zipCode);
     }
 
 }

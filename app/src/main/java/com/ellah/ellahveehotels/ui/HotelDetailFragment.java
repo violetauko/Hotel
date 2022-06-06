@@ -76,8 +76,6 @@ public class HotelDetailFragment extends Fragment {
         mRatingLabel.setText(Double.toString(mHotel.getRating()));
         mPhoneLabel.setText(mHotel.getPhone());
         mAddressLabel.setText(mHotel.getLocation().toString());
-
         return view;
     }
     }
-}
