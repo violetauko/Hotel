@@ -1,6 +1,7 @@
 package com.ellah.ellahveehotels.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
+import com.ellah.ellahveehotels.ui.HotelDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -29,7 +34,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
         mContext = context;
     }
 
-    public class HotelViewHolder extends RecyclerView.ViewHolder {
+    public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.hotelImageView)
         ImageView mImageLabel;
         @BindView(R.id.hotelNameTextView)
@@ -43,14 +48,25 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();//get the context of the itemView (the activity)
-        }
 
+            itemView.setOnClickListener(this);
+        }
         public void bindHotel(Business hotel) {
             mNameLabel.setText(hotel.getName());
             mRatingLabel.setText(" Hotel Rating at: "+  hotel.getRating());
             mCategoriesLabel.setText(hotel.getCategories().get(0).getTitle());
             Picasso.get().load(hotel.getImageUrl()).into(mImageLabel);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, HotelDetailActivity.class);
+
+            intent.putExtra("position",itemPosition);
+            intent.putExtra("hotels", Parcels.wrap(mHotels));
+            mContext.startActivity(intent);
         }
     }
 
