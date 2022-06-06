@@ -47,6 +47,7 @@ public class BookingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = getIntent().getStringExtra("location");
 
+
         BookingApi client = BookingClient.getClient();
         Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
         call.enqueue(new Callback<HotelSearchResponse>() {
@@ -59,7 +60,7 @@ if (response.isSuccessful()) {
                     mRecyclerView.setAdapter(mAdapter);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BookingActivity.this);
                     mRecyclerView.setLayoutManager(layoutManager);
-                    mRecyclerView.setHasFixedSize(true);
+
 
                     showHotels();
                 } else {

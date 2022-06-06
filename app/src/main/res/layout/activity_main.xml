@@ -17,10 +17,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="-1dp"
         android:scaleType="centerCrop"
         android:src="@drawable/hotel3" />
 
@@ -65,9 +65,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="339dp"
-        android:layout_marginEnd="-10dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="287dp"
+        android:layout_marginEnd="-7dp"
         android:fontFamily="@font/aclonica"
         android:text="Don't have a place to stay? Find our hotels wherever you are."
         android:textColor="@color/white"
@@ -96,11 +96,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="158dp"
-        android:layout_marginBottom="263dp"
+        android:layout_marginBottom="243dp"
         android:background="@color/teal_700"
+        android:fontFamily="@font/aclonica"
         android:text="Find Hotel"
         android:textAllCaps="false"
-        android:fontFamily="@font/aclonica"
         android:textColor="@color/white" />
 
 
