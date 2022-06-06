@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,7 +48,9 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
         public void bindHotel(Business hotel) {
             mNameLabel.setText(hotel.getName());
             mRatingLabel.setText(String.valueOf(hotel.getRating()));
-            mCategoriesLabel.setText(hotel.getCategories().toString());//
+            mCategoriesLabel.setText(hotel.getCategories().get(0).getTitle());
+            Picasso.get().load(hotel.getImageUrl()).into(mImageLabel);
+
         }
     }
 

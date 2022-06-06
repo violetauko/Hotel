@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "com.ellah.ellahveehotels"
         minSdk 21
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -51,5 +51,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

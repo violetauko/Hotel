@@ -16,7 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RoomsActivity extends AppCompatActivity {
-    @BindView(R.id.listView) ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
