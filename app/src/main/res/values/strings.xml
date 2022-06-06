@@ -4,4 +4,6 @@
     <string name="the_great_vee_hotels">The Great Vee Hotels</string>
     <string name="book_your_stay_today">Book your stay today</string>
     <string name="book_now">Book now</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
