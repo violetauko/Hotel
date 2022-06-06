@@ -39,7 +39,7 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.websiteTextView) TextView mWebsiteLabel;
     @BindView(R.id.phoneTextView) TextView mPhoneLabel;
     @BindView(R.id.addressTextView) TextView mAddressLabel;
-    @BindView(R.id.priceButton) TextView mpriceButton;
+    @BindView(R.id.descButton) TextView mdescButton;
     @BindView(R.id.emailTextView) TextView mEmail;
 
     private Business mHotel;
@@ -76,7 +76,7 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
         }
 
         mNameLabel.setText(mHotel.getName());
-        mRatingLabel.setText(Double.toString(mHotel.getRating()));
+        mRatingLabel.setText("Rating " + mHotel.getRating());
         mPhoneLabel.setText(mHotel.getPhone());
         mAddressLabel.setText(mHotel.getLocation().toString());
         mAddressLabel.setOnClickListener(this);
@@ -108,4 +108,3 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     }
 
     }
-}

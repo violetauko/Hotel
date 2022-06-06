@@ -52,13 +52,13 @@
             tools:ignore="NotSibling" />
 
         <Button
-            android:id="@+id/priceButton"
+            android:id="@+id/descButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawablePadding="4dp"
             android:backgroundTint="@color/teal_700"
-            android:text="Check Prices"
+            android:text="Description"
             android:textAllCaps="false"
             android:textSize="15sp"
             android:textStyle="bold" />

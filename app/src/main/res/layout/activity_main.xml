@@ -17,12 +17,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="-1dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/hotel3" />
+        android:src="@drawable/hotel9" />
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -32,14 +32,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="119dp"
-        android:layout_marginEnd="-39dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginEnd="-45dp"
         android:fontFamily="@font/aclonica"
         android:text="The Great Vee Hotels"
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -48,14 +49,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="178dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="94dp"
+        android:fontFamily="@font/aclonica"
         android:text="@string/book_your_stay_today"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:fontFamily="@font/aclonica"
         android:textStyle="italic|bold" />
-
 
     <TextView
         android:id="@+id/textView2"
@@ -65,13 +65,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="287dp"
-        android:layout_marginEnd="-7dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="312dp"
+        android:layout_marginEnd="-3dp"
         android:fontFamily="@font/aclonica"
-        android:text="Don't have a place to stay? Find our hotels wherever you are."
+        android:text="@string/don_t_have_a_place_to_stay_find_our_hotels_wherever_you_are"
         android:textColor="@color/white"
-        android:textSize="11sp" />
+        android:textSize="11.5sp" />
 
     <EditText
         android:id="@+id/locationEditText"
@@ -96,7 +96,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="158dp"
-        android:layout_marginBottom="243dp"
+        android:layout_marginBottom="193dp"
         android:background="@color/teal_700"
         android:fontFamily="@font/aclonica"
         android:text="Find Hotel"
