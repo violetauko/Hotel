@@ -7,9 +7,9 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1175" />
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_hotel_detail.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_rooms.xml" value="0.24166666666666667" />
-        <entry key="app/src/main/res/layout/fragment_hotel_detail.xml" value="0.12771739130434784" />
+        <entry key="app/src/main/res/layout/fragment_hotel_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/hotel_list_item.xml" value="0.25" />
       </map>
     </option>
