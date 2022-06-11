@@ -9,12 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.models.Category;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -41,6 +46,8 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.addressTextView) TextView mAddressLabel;
     @BindView(R.id.reviewButton) TextView mreviewButton;
     @BindView(R.id.emailTextView) TextView mEmail;
+    @BindView(R.id.saveHotel)
+    Button mSaveHotel;
 
     private Business mHotel;
     public HotelDetailFragment() {
@@ -79,10 +86,14 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
         mRatingLabel.setText("Rating " + mHotel.getRating());
         mPhoneLabel.setText(mHotel.getPhone());
         mAddressLabel.setText(mHotel.getLocation().toString());
+
+
         mAddressLabel.setOnClickListener(this);
         mPhoneLabel.setOnClickListener(this);
         mWebsiteLabel.setOnClickListener(this);
         mEmail.setOnClickListener(this);
+
+        mSaveHotel.setOnClickListener(this);
         return view;
     }
 
@@ -104,6 +115,13 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
                             + "," + mHotel.getCoordinates().getLongitude()
                             + "?q=(" + mHotel.getName() + ")"));
             startActivity(mapIntent);
+        }
+        if (view == mSaveHotel) {
+            DatabaseReference ref = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
+            ref.push().setValue(mHotel);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 
