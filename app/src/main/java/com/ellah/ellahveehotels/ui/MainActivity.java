@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);//start the activity
                 }
                 }
-                private void addToSharedPreferences(String location) {
+               private void addToSharedPreferences(String location) {
                     mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();//
                 }
             }

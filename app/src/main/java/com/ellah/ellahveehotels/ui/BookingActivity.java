@@ -33,8 +33,9 @@ import retrofit2.Response;
 
 public class BookingActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
-    private String mRecenteAddress;
+   private String mRecentAddress;
 
+    private static final String TAG = BookingActivity.class.getSimpleName();
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private HotelListAdapter mAdapter;
@@ -51,14 +52,16 @@ public class BookingActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = getIntent().getStringExtra("location");
+
 
        //Here, we retrieve our shared preferences from the preference manager,
         // pull data from it by calling getString() and providing the key that corresponds to the data we'd like to retrieve
         //The default null value will be returned if the getString() method is unable to find a value that corresponds to the key we provided.
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecenteAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        Log.d("Shared Location", mRecenteAddress);
+        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+
+        String location = mRecentAddress;
+
 
         BookingApi client = BookingClient.getClient();
         Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
