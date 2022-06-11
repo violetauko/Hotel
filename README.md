@@ -5,7 +5,8 @@ This project is about finding hotels that are near a given location, navigating 
 git clone https://github.com/violetauko/Hotel.git.
 
 ## Prerequisites
-Install android studio. Emulator or device must be connected to the computer.
+Install android studio. 
+Emulator or device must be connected to the computer.
 
 ## Built With
 Built with Android Studio.
