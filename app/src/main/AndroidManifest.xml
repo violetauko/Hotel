@@ -16,28 +16,28 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ui.HotelDetailActivity"
-            android:exported="false" />
+            android:name=".ui.HotelDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ellah.ellahveehotels.ui.BookingActivity">
+            </meta-data>
+        </activity>
         <activity
-            android:name=".ui.RoomsActivity"
-            android:exported="false" />
+            android:name=".ui.BookingActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ellah.ellahveehotels.ui.MainActivity">
+            </meta-data>
+        </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
-            android:theme="@style/NoActionBarTheme">
+            android:theme="@style/NoActionBarTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.BookingActivity"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.ellah.ellahveehotels.ui.MainActivity">
-
-            </meta-data>
         </activity>
 
         <meta-data

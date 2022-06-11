@@ -5,13 +5,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.adapters.HotelListAdapter;
 import com.ellah.ellahveehotels.models.Business;
@@ -28,13 +32,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BookingActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecenteAddress;
+
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private HotelListAdapter mAdapter;
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
-
 
     public List<Business> hotels;
 
@@ -47,6 +53,12 @@ public class BookingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String location = getIntent().getStringExtra("location");
 
+       //Here, we retrieve our shared preferences from the preference manager,
+        // pull data from it by calling getString() and providing the key that corresponds to the data we'd like to retrieve
+        //The default null value will be returned if the getString() method is unable to find a value that corresponds to the key we provided.
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecenteAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Location", mRecenteAddress);
 
         BookingApi client = BookingClient.getClient();
         Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
@@ -65,7 +77,6 @@ if (response.isSuccessful()) {
                     showHotels();
                 } else {
                     showUnsuccessfulMessage();
-
                 }
             }
 

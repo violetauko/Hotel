@@ -12,11 +12,11 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="450dp"
+        android:layout_centerInParent="true"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:layout_centerInParent="true"
-        android:src="@drawable/hotel6"
-        app:shapeAppearanceOverlay="@style/roundImageview"/>
+        android:src="@drawable/hotel5"
+        app:shapeAppearanceOverlay="@style/roundImageview" />
 
 
     <TextView
@@ -76,12 +76,12 @@
         android:layout_marginTop="379dp"
         android:layout_marginEnd="84dp"
         android:layout_marginBottom="7dp"
-        android:background="@color/dark_green"
         android:fontFamily="@font/aclonica"
         android:hint="Your Location"
         android:padding="7dp"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"/>
+        android:background="@drawable/round_button"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/findHotel"
@@ -91,10 +91,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="71dp"
-        android:background="@color/dark_green"
+        android:background="@drawable/round_button"
         android:fontFamily="@font/aclonica"
         android:text="Find Hotel"
         android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:textColor="@color/black" />
 
 </RelativeLayout>

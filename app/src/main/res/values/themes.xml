@@ -16,11 +16,11 @@
     <style name="NoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">#012A3C</item>
+        <item name="colorPrimary">#23182C</item>
     </style>
     <style name="roundImageview" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">20dp</item>
+        <item name="cornerSize">30dp</item>
         <item name="color">@color/white</item>
     </style>
 </resources>

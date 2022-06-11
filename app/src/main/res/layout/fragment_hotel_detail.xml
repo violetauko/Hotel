@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.HotelDetailFragment">
 
     <LinearLayout
@@ -14,22 +15,25 @@
             android:id="@+id/hotelNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="5dp"
             android:text="Hotel Name"
             android:textColor="@color/dark_green"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:id="@+id/hotelImageView"
-       android:background="@drawable/hotel6"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:scaleType="centerCrop" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/hotelImageView"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"
+            android:src="@drawable/hotel5"
+            app:shapeAppearanceOverlay="@style/roundImageview"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -47,7 +51,7 @@
             android:layout_alignTop="@+id/hotelNameTextView"
             android:layout_alignParentEnd="true"
             android:text="Rating 4.5"
-            android:textColor="@color/dark_green"
+            android:textColor="@color/teal_700"
             android:textStyle="bold"
             tools:ignore="NotSibling" />
 
@@ -56,12 +60,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/dark_green"
+            android:backgroundTint="@color/teal_700"
             android:drawablePadding="4dp"
             android:text="Reviews"
             android:textAllCaps="false"
-            android:textSize="15sp"
             android:textColor="@color/white"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
