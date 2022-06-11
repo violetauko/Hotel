@@ -52,13 +52,13 @@ public class BookingActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String location = intent.getStringExtra("location");
 
        //Here, we retrieve our shared preferences from the preference manager,
         // pull data from it by calling getString() and providing the key that corresponds to the data we'd like to retrieve
         //The default null value will be returned if the getString() method is unable to find a value that corresponds to the key we provided.
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        String location = intent.getStringExtra("location");
 
         //String location = mRecentAddress;
 
