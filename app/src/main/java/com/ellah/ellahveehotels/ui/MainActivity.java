@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    // private SharedPreferences mSharedPreferences;
     //private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedLocationReference;
+    private ValueEventListener mSearchedLocationReferenceListener;
+
     @BindView(R.id.locationEditText) EditText mLocationEditText;//bind the locationEditText
     @BindView(R.id.findHotel) Button mFindHotel;//bind the findHotel button
 
@@ -53,11 +55,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);//bind the activity
-
         //mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
        // mEditor = mSharedPreferences.edit();//get the editor
         mFindHotel.setOnClickListener(this);//set the onClickListener for the findHotel button
@@ -81,6 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void saveLocationToFirebase(String location) {
         mSearchedLocationReference.push().setValue(location);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
+    }
+
 
 //    private void addToSharedPreferences(String location) {
 //        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
