@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
+        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);//remove the event listener when the activity is not in use
     }
 
 

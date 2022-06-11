@@ -10,53 +10,36 @@ import org.parceler.Parcel;
 @Parcel
 public class Business {
 
-    @SerializedName("id")
-    @Expose
     private String id;
-    @SerializedName("alias")
-    @Expose
+
     private String alias;
-    @SerializedName("name")
-    @Expose
+
     private String name;
-    @SerializedName("image_url")
-    @Expose
+
     private String imageUrl;
-    @SerializedName("is_closed")
-    @Expose
+
     private Boolean isClosed;
-    @SerializedName("url")
-    @Expose
+
     private String url;
-    @SerializedName("review_count")
-    @Expose
+
     private Integer reviewCount;
-    @SerializedName("categories")
-    @Expose
+
     private List<Category> categories = null;
-    @SerializedName("rating")
-    @Expose
+
     private Double rating;
-    @SerializedName("coordinates")
-    @Expose
+
     private Coordinates coordinates;
-    @SerializedName("transactions")
-    @Expose
+
     private List<String> transactions = null;
-    @SerializedName("price")
-    @Expose
+
     private String price;
-    @SerializedName("location")
-    @Expose
+
     private Location location;
-    @SerializedName("phone")
-    @Expose
+
     private String phone;
-    @SerializedName("display_phone")
-    @Expose
+
     private String displayPhone;
-    @SerializedName("distance")
-    @Expose
+
     private Double distance;
 
     /**
@@ -66,25 +49,25 @@ public class Business {
     public Business() {
     }
 
-    /**
-     * 
-     * @param displayPhone
-     * @param distance
-     * @param rating
-     * @param coordinates
-     * @param transactions
-     * @param url
-     * @param isClosed
-     * @param reviewCount
-     * @param phone
-     * @param price
-     * @param imageUrl
-     * @param name
-     * @param alias
-     * @param location
-     * @param id
-     * @param categories
-     */
+
+//     *
+//     * @param displayPhone
+//     * @param distance
+//     * @param rating
+//     * @param coordinates
+//     * @param transactions
+//     * @param url
+//     * @param isClosed
+//     * @param reviewCount
+//     * @param phone
+//     * @param price
+//     * @param imageUrl
+//     * @param name
+//     * @param alias
+//     * @param location
+//     * @param id
+//     * @param categories
+
     public Business(String id, String alias, String name, String imageUrl, Boolean isClosed, String url, Integer reviewCount, List<Category> categories, Double rating, Coordinates coordinates, List<String> transactions, String price, Location location, String phone, String displayPhone, Double distance) {
         super();
         this.id = id;
