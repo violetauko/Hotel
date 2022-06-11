@@ -36,6 +36,7 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice.txt'
+        exclude 'META-INF/androidx.legacy_legacy-support-core-utils.version'
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
