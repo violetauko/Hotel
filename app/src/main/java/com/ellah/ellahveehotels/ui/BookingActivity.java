@@ -36,16 +36,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookingActivity extends AppCompatActivity implements View.OnClickListener{
+public class BookingActivity extends AppCompatActivity implements View.OnClickListener {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
-   private String mRecentAddress;
+    private String mRecentAddress;
 
     private static final String TAG = BookingActivity.class.getSimpleName();
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private HotelListAdapter mAdapter;
-    @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
     @BindView(R.id.saveHotel)
@@ -63,46 +64,15 @@ public class BookingActivity extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
 
-       //Here, we retrieve our shared preferences from the preference manager,
+        //Here, we retrieve our shared preferences from the preference manager,
         // pull data from it by calling getString() and providing the key that corresponds to the data we'd like to retrieve
         //The default null value will be returned if the getString() method is unable to find a value that corresponds to the key we provided.
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-        String location = intent.getStringExtra("location");
-
-        //String location = mRecentAddress;
-
-
-        BookingApi client = BookingClient.getClient();
-        Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
-        call.enqueue(new Callback<HotelSearchResponse>() {
-            @Override
-            public void onResponse(Call<HotelSearchResponse> call, Response<HotelSearchResponse> response) {
-                hideProgressBar();
-if (response.isSuccessful()) {
-                    hotels = response.body().getBusinesses();
-                    mAdapter = new HotelListAdapter(BookingActivity.this, hotels);
-                    mRecyclerView.setAdapter(mAdapter);
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BookingActivity.this);
-                    mRecyclerView.setLayoutManager(layoutManager);
-
-
-                    showHotels();
-                } else {
-                    showUnsuccessfulMessage();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HotelSearchResponse> call, Throwable t) {
-                hideProgressBar();
-                showFailureMessage();
-
-            }
-        });
-    }
-    private void addToSharedPreferences(String location) {
-        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+//        String location = intent.getStringExtra("location");
+        if (mRecentAddress != null) {
+            fetchHotels(mRecentAddress);
+        }
     }
     //In onCreateOptionsMenu() we inflate and bind our Views,
     // define our mSharedPreferences and mEditor member variables.
@@ -121,9 +91,25 @@ if (response.isSuccessful()) {
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) menuItem.getActionView();
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String location) {
+                addToSharedPreferences(location);
+                fetchHotels(location);
+                return false;
+            }
+
+
+            @Override
+            public boolean onQueryTextChange(String location) {
+                return false;
+            }
+        });
+
         return true;
     }
-//onOptionsItemSelected() simply contains the line return super.onOptionsItemSelected(item);.
+
+    //onOptionsItemSelected() simply contains the line return super.onOptionsItemSelected(item);.
 // This ensures that all functionality from the parent class (referred to here as super)
 // will still apply despite us manually overriding portions of the menu's functionality.
     @Override
@@ -149,6 +135,39 @@ if (response.isSuccessful()) {
         mProgressBar.setVisibility(View.GONE);
     }
 
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+    }
+
+    private void fetchHotels(String location) {
+        BookingApi client = BookingClient.getClient();
+        Call<HotelSearchResponse> call = client.getHotels(location, "hotels");
+        call.enqueue(new Callback<HotelSearchResponse>() {
+            @Override
+            public void onResponse(Call<HotelSearchResponse> call, Response<HotelSearchResponse> response) {
+                hideProgressBar();
+                if (response.isSuccessful()) {
+                    hotels = response.body().getBusinesses();
+                    mAdapter = new HotelListAdapter(BookingActivity.this, hotels);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BookingActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+
+
+                    showHotels();
+                } else {
+                    showUnsuccessfulMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HotelSearchResponse> call, Throwable t) {
+                hideProgressBar();
+                showFailureMessage();
+
+            }
+        });
+    }
     @Override
     public void onClick(View view) {
         if (view == mSaveHotel) {
