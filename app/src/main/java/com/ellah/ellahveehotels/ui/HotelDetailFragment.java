@@ -74,7 +74,9 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_hotel_detail, container, false);
         ButterKnife.bind(this, view);
-        Picasso.get().load(mHotel.getImageUrl()).into(mImageLabel);
+        Picasso.get()
+                .load(mHotel.getImageUrl())
+                .into(mImageLabel);
 
         List<String> categories = new ArrayList<>();
 
@@ -83,7 +85,7 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
         }
 
         mNameLabel.setText(mHotel.getName());
-        mRatingLabel.setText("Rating " + mHotel.getRating());
+        mRatingLabel.setText(Double.toString(mHotel.getRating()) + "/5");
         mPhoneLabel.setText(mHotel.getPhone());
         mAddressLabel.setText(mHotel.getLocation().toString());
 
@@ -94,6 +96,7 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
         mEmail.setOnClickListener(this);
 
         mSaveHotel.setOnClickListener(this);
+
         return view;
     }
 
@@ -116,13 +119,13 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
                             + "?q=(" + mHotel.getName() + ")"));
             startActivity(mapIntent);
         }
-//        if (view == mSaveHotel) {
-//            DatabaseReference ref = FirebaseDatabase
-//                    .getInstance()
-//                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
-//            ref.push().setValue(mHotel);
-//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-//        }
+        if (view == mSaveHotel) {
+            DatabaseReference ref = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
+            ref.push().setValue(mHotel);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
     }
 
     }
