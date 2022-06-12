@@ -5,10 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.BookingActivity">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Hotels"
+        android:id="@+id/saveHotel"
+        android:background="@color/teal_700"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -19,6 +29,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:layout_centerInParent="true" />
 
     <TextView

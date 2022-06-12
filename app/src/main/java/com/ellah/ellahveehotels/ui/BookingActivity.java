@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookingActivity extends AppCompatActivity {
+public class BookingActivity extends AppCompatActivity implements View.OnClickListener{
     private SharedPreferences mSharedPreferences;
    private String mRecentAddress;
 
@@ -42,6 +43,8 @@ public class BookingActivity extends AppCompatActivity {
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
+    @BindView(R.id.saveHotel)
+    Button mSaveHotel;
 
     public List<Business> hotels;
 
@@ -50,6 +53,8 @@ public class BookingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
         ButterKnife.bind(this);
+
+        mSaveHotel.setOnClickListener(this);
 
         Intent intent = getIntent();
 
@@ -109,4 +114,12 @@ if (response.isSuccessful()) {
         mProgressBar.setVisibility(View.GONE);
     }
 
+    @Override
+    public void onClick(View view) {
+        if (view == mSaveHotel) {
+            Intent intent = new Intent(BookingActivity.this, SavedHotelsActivity.class);
+            startActivity(intent);
+        }
+
+    }
 }
