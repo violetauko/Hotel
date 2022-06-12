@@ -11,13 +11,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ellah.ellahveehotels.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.ktx.Firebase;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +42,10 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
     @BindView(R.id.passwordEditText) EditText mPasswordEditText;
     @BindView(R.id.confirmPasswordEditText) EditText mConfirmPasswordEditText;
     @BindView(R.id.loginTextView) TextView mLoginTextView;
+    @BindView(R.id.firebaseProgressBar)
+    ProgressBar mSignInProgressBar;
+    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
+    private String mName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +60,34 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
         createAuthStateListener();
     }
     private void createNewUser() {
+        mName = mNameEditText.getText().toString().trim();
         //fetch the contents of registration form  and transform each value into a string
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
 
-    //call the built-in Firebase method createUserWithEmailAndPassword()
+        boolean validEmail = isValidEmail(email);
+        boolean validName = isValidName(name);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+        boolean validmName = isValidName(mName);
+        if (!validEmail || !validName || !validPassword) return;
+
+        //call the built-in Firebase method createUserWithEmailAndPassword()
     // to create a new user account in Firebase,
     // passing in the user's email and password
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        Log.d(TAG, "Authentication successful");
-                    } else {
-                        Toast.makeText(CreateAccountActiviy.this, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Authentication successful");
+                            createFirebaseUserProfile(Objects.requireNonNull(task.getResult().getUser()));
+                        } else {
+                            Toast.makeText(CreateAccountActiviy.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
     }
@@ -137,5 +160,26 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
             return false;
         }
         return true;
+    }
+    //To set the name, we first need to build a new UserProfileChangeRequest object.
+    // This is a Firebase object used to request updates to user profile information
+    private void createFirebaseUserProfile(final FirebaseUser user) {
+// call the setDisplayName() method to attach the user-entered name to the user's profile
+        UserProfileChangeRequest addProfileName = new UserProfileChangeRequest.Builder()
+                .setDisplayName(mName)
+                .build();
+
+        user.updateProfile(addProfileName)//We then pass this UserProfileChangeRequest object into the updateProfile() method and attach an OnCompleteListener
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, Objects.requireNonNull(user.getDisplayName()));
+                            Toast.makeText(CreateAccountActiviy.this, "The display name has ben set", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
     }
 }
