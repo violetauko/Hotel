@@ -9,11 +9,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.ellah.ellahveehotels.Constants;
@@ -34,6 +38,7 @@ import retrofit2.Response;
 
 public class BookingActivity extends AppCompatActivity implements View.OnClickListener{
     private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
    private String mRecentAddress;
 
     private static final String TAG = BookingActivity.class.getSimpleName();
@@ -96,6 +101,36 @@ if (response.isSuccessful()) {
             }
         });
     }
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+    }
+    //In onCreateOptionsMenu() we inflate and bind our Views,
+    // define our mSharedPreferences and mEditor member variables.
+    // Also to retrieve a user’s search from the SearchView,
+    // we must grab the action_search menu item from our new layout,
+    // and use the MenuItemCompat.getActionView() method.
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        return true;
+    }
+//onOptionsItemSelected() simply contains the line return super.onOptionsItemSelected(item);.
+// This ensures that all functionality from the parent class (referred to here as super)
+// will still apply despite us manually overriding portions of the menu's functionality.
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
