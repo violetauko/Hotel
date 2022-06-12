@@ -45,7 +45,7 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
         mCreateUserButton.setOnClickListener(this);
         mLoginTextView.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();//get firebase auth instance
-
+// add the mAuthStateListener member variable, setting it in our onCreate() method by calling a new method, createAuthStateListener()
         createAuthStateListener();
     }
     private void createNewUser() {
@@ -54,9 +54,10 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
-//call the built-in Firebase method createUserWithEmailAndPassword()
-// to create a new user account in Firebase,
-// passing in the user's email and password
+
+    //call the built-in Firebase method createUserWithEmailAndPassword()
+    // to create a new user account in Firebase,
+    // passing in the user's email and password
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -82,6 +83,19 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
             }
 
         };
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
