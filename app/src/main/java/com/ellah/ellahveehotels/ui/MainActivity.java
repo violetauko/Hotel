@@ -27,34 +27,33 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
    // private SharedPreferences mSharedPreferences;
     //private SharedPreferences.Editor mEditor;
-    private DatabaseReference mSearchedLocationReference;
-    private ValueEventListener mSearchedLocationReferenceListener;
+   // private DatabaseReference mSearchedLocationReference;
+   // private ValueEventListener mSearchedLocationReferenceListener;
 
-    @BindView(R.id.locationEditText) EditText mLocationEditText;//bind the locationEditText
     @BindView(R.id.findHotel) Button mFindHotel;//bind the findHotel button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mSearchedLocationReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);//get the reference to the searchedLocation child in the database
-
-        mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot locationSnapshot : snapshot.getChildren()) {
-                    String location = locationSnapshot.getValue().toString();
-                    Log.d("updated location", location);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {//if the database is unable to connect, display a toast message
-
-            }
-        });
+//        mSearchedLocationReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference()
+//                .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);//get the reference to the searchedLocation child in the database
+//
+//        mSearchedLocationReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for (DataSnapshot locationSnapshot : snapshot.getChildren()) {
+//                    String location = locationSnapshot.getValue().toString();
+//                    Log.d("updated location", location);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {//if the database is unable to connect, display a toast message
+//
+//            }
+//        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);//bind the activity
@@ -65,27 +64,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v == mFindHotel) {
-            String location = mLocationEditText.getText().toString();
-
-            saveLocationToFirebase(location);
+            //String location = mLocationEditText.getText().toString();
+            //saveLocationToFirebase(location);
 
 //            if(!(location).equals("")) {
 //                addToSharedPreferences(location);
 //            }
             Intent intent = new Intent(MainActivity.this, BookingActivity.class);
-            intent.putExtra("location", location);
+           // intent.putExtra("location", location);
             startActivity(intent);
         }
     }
 
-    public void saveLocationToFirebase(String location) {
-        mSearchedLocationReference.push().setValue(location);
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);//remove the event listener when the activity is not in use
-    }
+//    public void saveLocationToFirebase(String location) {
+//        mSearchedLocationReference.push().setValue(location);
+//    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);//remove the event listener when the activity is not in use
+//    }
 
 
 //    private void addToSharedPreferences(String location) {

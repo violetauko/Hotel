@@ -67,21 +67,21 @@
         android:textColor="@color/white"
         android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/locationEditText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/findHotel"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="379dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="7dp"
-        android:fontFamily="@font/aclonica"
-        android:hint="Your Location"
-        android:padding="7dp"
-        android:background="@drawable/round_button"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"/>
+<!--    <EditText-->
+<!--        android:id="@+id/locationEditText"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/findHotel"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_marginTop="379dp"-->
+<!--        android:layout_marginEnd="84dp"-->
+<!--        android:layout_marginBottom="7dp"-->
+<!--        android:background="@drawable/round_button"-->
+<!--        android:fontFamily="@font/aclonica"-->
+<!--        android:hint="Your Location"-->
+<!--        android:padding="7dp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textColorHint="@color/black" />-->
 
     <Button
         android:id="@+id/findHotel"
