@@ -116,13 +116,13 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
                             + "?q=(" + mHotel.getName() + ")"));
             startActivity(mapIntent);
         }
-        if (view == mSaveHotel) {
-            DatabaseReference ref = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
-            ref.push().setValue(mHotel);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-        }
+//        if (view == mSaveHotel) {
+//            DatabaseReference ref = FirebaseDatabase
+//                    .getInstance()
+//                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
+//            ref.push().setValue(mHotel);
+//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     }
