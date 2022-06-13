@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.BookingActivity">
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Saved Hotels"
         android:id="@+id/saveHotel"
-        android:background="@color/teal_700"
+        android:background="@drawable/round_button"
         android:textColor="@color/white"
         android:layout_marginTop="10dp"
+        android:textAllCaps="false"
         android:layout_marginLeft="10dp"
         android:visibility="visible" />
 

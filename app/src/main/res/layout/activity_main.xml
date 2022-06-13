@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
-    android:background="@color/dark_green">
+    android:background="@drawable/pexels_malidate_van_833045">
 
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/hotel5"
-        app:shapeAppearanceOverlay="@style/roundImageview" />
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="450dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/hotel5"-->
+<!--        app:shapeAppearanceOverlay="@style/roundImageview" />-->
 
 
     <TextView
@@ -27,13 +27,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="-40dp"
-        android:fontFamily="@font/aclonica"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="-59dp"
+        android:fontFamily="@font/montserrat_alternates"
         android:text="The Great Vee Hotels"
-        android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textColor="@color/purple_maroon"
+        android:textSize="37sp"
         android:textStyle="bold" />
 
     <TextView
@@ -43,45 +43,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="94dp"
-        android:fontFamily="@font/aclonica"
-        android:text="@string/book_your_stay_today"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="Find Your Best Confort Place"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic|bold" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="417dp"
-        android:layout_marginEnd="0dp"
-        android:fontFamily="@font/aclonica"
-        android:text="Where are you going?"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
-
-<!--    <EditText-->
-<!--        android:id="@+id/locationEditText"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_above="@+id/findHotel"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:layout_marginTop="379dp"-->
-<!--        android:layout_marginEnd="84dp"-->
-<!--        android:layout_marginBottom="7dp"-->
-<!--        android:background="@drawable/round_button"-->
-<!--        android:fontFamily="@font/aclonica"-->
-<!--        android:hint="Your Location"-->
-<!--        android:padding="7dp"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textColorHint="@color/black" />-->
 
     <Button
         android:id="@+id/findHotel"
@@ -92,9 +60,10 @@
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="71dp"
         android:background="@drawable/round_button"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/montserrat_alternates"
         android:text="Find Hotel"
+        android:textStyle="bold"
         android:textAllCaps="false"
-        android:textColor="@color/black" />
+        android:textColor="@color/g" />
 
 </RelativeLayout>

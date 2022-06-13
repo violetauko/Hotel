@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -44,11 +45,12 @@ public class CreateAccountActiviy extends AppCompatActivity implements View.OnCl
     @BindView(R.id.loginTextView) TextView mLoginTextView;
     @BindView(R.id.firebaseProgressBar)
     ProgressBar mSignInProgressBar;
-    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
+//    @BindView(R.id.loadingTextView) TextView mLoadingSignUp;
     private String mName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_activiy);
         ButterKnife.bind(this);
