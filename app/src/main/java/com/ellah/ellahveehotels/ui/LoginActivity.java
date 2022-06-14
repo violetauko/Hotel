@@ -37,9 +37,6 @@ EditText mPasswordEditText;
 @BindView(R.id.emailEditText) EditText mEmailEditText;
 @BindView(R.id.passwordLoginButton)
 Button mPasswordLoginButton;
-@BindView(R.id.firebaseProgressBar)
-ProgressBar mSignInProgressBar;
-//@BindView(R.id.loadingTextView) TextView mLoadingSignUp;
 
 
     @Override
@@ -82,7 +79,6 @@ ProgressBar mSignInProgressBar;
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        hideProgressBar();
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail", task.getException());
@@ -115,17 +111,7 @@ ProgressBar mSignInProgressBar;
         }
         if(view == mPasswordLoginButton){
             loginWithPassword();
-            showProgressBar();
         }
     }
-    private void showProgressBar() {
-        mSignInProgressBar.setVisibility(View.VISIBLE);
-//        mLoadingSignUp.setVisibility(View.VISIBLE);
-//        mLoadingSignUp.setText("Log in you in");
-    }
 
-    private void hideProgressBar() {
-        mSignInProgressBar.setVisibility(View.GONE);
-//        mLoadingSignUp.setVisibility(View.GONE);
-    }
 }

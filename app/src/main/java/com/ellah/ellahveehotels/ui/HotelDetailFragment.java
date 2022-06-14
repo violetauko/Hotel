@@ -44,7 +44,6 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.websiteTextView) TextView mWebsiteLabel;
     @BindView(R.id.phoneTextView) TextView mPhoneLabel;
     @BindView(R.id.addressTextView) TextView mAddressLabel;
-    @BindView(R.id.reviewButton) TextView mreviewButton;
     @BindView(R.id.emailTextView) TextView mEmail;
     @BindView(R.id.saveHotel)
     Button mSaveHotel;
