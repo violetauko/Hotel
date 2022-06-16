@@ -2,6 +2,8 @@ package com.ellah.ellahveehotels.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +16,12 @@ import android.widget.TextView;
 
 import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
+import com.ellah.ellahveehotels.adapters.FirebaseHotelListAdapter;
 import com.ellah.ellahveehotels.adapters.FirebaseHotelViewHolder;
 import com.ellah.ellahveehotels.models.Business;
+import com.ellah.ellahveehotels.util.ItemTouchHelperAdapter;
+import com.ellah.ellahveehotels.util.OnStartDragListener;
+import com.ellah.ellahveehotels.util.SimpleItemTouchHelperCallback;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -46,7 +52,7 @@ public class SavedHotelsActivity extends AppCompatActivity {
         hideProgressBar();
         showHotels();
     }
-//We then create a method to set up the FirebaseAdapter by first creating a FirebaseRecyclerOptions object
+    //We then create a method to set up the FirebaseAdapter by first creating a FirebaseRecyclerOptions object
 // which is cast into the model class, we build the object by setting the query
 // (or database reference) (by) passing in the database-reference and the Model class the objects will be parsed into
     private void setUpFirebaseAdapter() {
@@ -74,7 +80,7 @@ public class SavedHotelsActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));//set the layout manager for the recycler view
         mRecyclerView.setAdapter(mFirebaseAdapter);//set the adapter for the recycler view
     }
-//Finally, we need to clean up the FirebaseAdapter.
+    //Finally, we need to clean up the FirebaseAdapter.
 // When the activity is stops, we need to call onStop() on the adapter
 // so that it can stop listening for changes in the Firebase database.
     @Override

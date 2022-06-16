@@ -1,4 +1,4 @@
-package com.ellah.ellahveehotels;
+package com.ellah.ellahveehotels.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;

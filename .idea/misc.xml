@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_hotel_detail.xml" value="0.165" />
         <entry key="app/src/main/res/layout/hotel_list_item.xml" value="0.20300751879699247" />
+        <entry key="app/src/main/res/layout/hotel_list_item_drag.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.23076923076923078" />
         <entry key="app/src/main/res/menu/menu_search.xml" value="0.1" />
       </map>

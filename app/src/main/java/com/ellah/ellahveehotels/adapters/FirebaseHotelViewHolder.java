@@ -24,6 +24,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 
 public class FirebaseHotelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public ImageView mHotelImageView;
     View mView;
     Context mContext;
 
@@ -34,10 +35,10 @@ public class FirebaseHotelViewHolder extends RecyclerView.ViewHolder implements 
         itemView.setOnClickListener(this);
     }
     public void bindHotel(Business hotel){
-        ImageView hotelImageView = (ImageView) mView.findViewById(R.id.hotelImageView);
+         mHotelImageView = (ImageView) mView.findViewById(R.id.hotelImageView);
         TextView hotelNameTextView = (TextView) mView.findViewById(R.id.hotelNameTextView);
         TextView ratingTextView = (TextView) mView.findViewById(R.id.ratingTextView);
-        Picasso.get().load(hotel.getImageUrl()).into(hotelImageView);
+        Picasso.get().load(hotel.getImageUrl()).into(mHotelImageView);
 
         hotelNameTextView.setText(hotel.getName());
         ratingTextView.setText("Rating: " + hotel.getRating() + "/5");

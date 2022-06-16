@@ -56,6 +56,15 @@
             android:textStyle="bold"
             tools:ignore="NotSibling" />
 
+        <Button
+            android:id="@+id/saveHotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_maroon"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
 
     </RelativeLayout>
 
@@ -132,18 +141,7 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/saveHotel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="22dp"
-            android:backgroundTint="@color/purple_maroon"
-            android:text="Save"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
+
 
     </RelativeLayout>
 </LinearLayout>
