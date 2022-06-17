@@ -1,6 +1,7 @@
 
 package com.ellah.ellahveehotels.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -58,6 +59,8 @@ public class Business {
     @SerializedName("displayPhone")
     @Expose
     private String displayPhone;
+
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -233,6 +236,14 @@ public class Business {
 
     public void setDistance(Double distance) {
         this.distance = distance;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

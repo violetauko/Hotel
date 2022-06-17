@@ -18,6 +18,8 @@ import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.models.Category;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -119,11 +121,19 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
             startActivity(mapIntent);
         }
         if (view == mSaveHotel) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference ref = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_HOTELS);
-            ref.push().setValue(mHotel);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                    .getReference(Constants.FIREBASE_CHILD_HOTELS)
+                    .child(uid);
+            DatabaseReference pushRef = ref.push();
+            String pushId = pushRef.getKey();
+            mHotel.setPushId(pushId);
+            pushRef.setValue(mHotel);
+
+            Intent intent = new Intent(getActivity(), SavedHotelsActivity.class);
+            startActivity(intent);
         }
     }
 

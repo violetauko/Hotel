@@ -15,14 +15,15 @@ import com.ellah.ellahveehotels.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 
 public class FirebaseHotelListAdapter extends FirebaseRecyclerAdapter<Business, FirebaseHotelViewHolder> implements ItemTouchHelperAdapter {
-    private DatabaseReference mRef;
+    private Query mRef;
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
 
 
-    public FirebaseHotelListAdapter(@NonNull FirebaseRecyclerOptions<Business> options,DatabaseReference ref, OnStartDragListener onStartDragListener, Context context) {
+    public FirebaseHotelListAdapter(@NonNull FirebaseRecyclerOptions<Business> options,Query ref, OnStartDragListener onStartDragListener, Context context) {
         super(options);
         mRef = ref.getRef();
         mOnStartDragListener = onStartDragListener;
