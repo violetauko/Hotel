@@ -2,6 +2,7 @@ package com.ellah.ellahveehotels.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.ui.HotelDetailActivity;
+import com.ellah.ellahveehotels.ui.HotelDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcel;
@@ -43,30 +48,52 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
         @BindView(R.id.categoryTextView) TextView mCategoriesLabel;
 
         private Context mContext;
+        private int mOrientation;
 
         public HotelViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();//get the context of the itemView (the activity)
 
+            // Determines the current orientation of the device:
+            mOrientation = itemView.getResources().getConfiguration().orientation;
+
+            // Checks if the recorded orientation matches Android's landscape configuration.
+            // if so, we create a new DetailFragment to display in our special landscape layout:
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE){
+                createDetailFragment(0);
+            }
             itemView.setOnClickListener(this);
         }
+        private void createDetailFragment(int position) {
+            HotelDetailFragment detailFragment = HotelDetailFragment.newInstance(mHotels, position);
+            FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.hotelDetailContainer, detailFragment);
+            // Commits these changes:
+            ft.commit();
+            // Creates a new FragmentTransaction:
+
+        }
+        @Override
+        public void onClick(View view) {
+            //detemines the position of the clicked hotel in the list:
+            int itemPosition = getLayoutPosition();
+            if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                createDetailFragment(itemPosition);
+            } else {
+                Intent intent = new Intent(mContext, HotelDetailActivity.class);
+                intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+                intent.putExtra(Constants.EXTRA_KEY_HOTELS, Parcels.wrap(mHotels));
+                mContext.startActivity(intent);
+            }
+        }
+
         public void bindHotel(Business hotel) {
             mNameLabel.setText(hotel.getName());
             mRatingLabel.setText(" Hotel Rating at: "+  hotel.getRating());
             mCategoriesLabel.setText(hotel.getCategories().get(0).getTitle());
             Picasso.get().load(hotel.getImageUrl()).into(mImageLabel);
 
-        }
-
-        @Override
-        public void onClick(View view) {
-            int itemPosition = getLayoutPosition();
-            Intent intent = new Intent(mContext, HotelDetailActivity.class);
-
-            intent.putExtra("position",itemPosition);
-            intent.putExtra("hotels", Parcels.wrap(mHotels));
-            mContext.startActivity(intent);
         }
     }
 

@@ -21,7 +21,7 @@ public class HotelPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return HotelDetailFragment.newInstance(mHotels.get(position));
+        return HotelDetailFragment.newInstance(mHotels, position);
     }
 
     @Override

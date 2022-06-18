@@ -51,24 +51,31 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     Button mSaveHotel;
 
     private Business mHotel;
+    private List<Business> mHotels;
+    private int mPosition;
+
     public HotelDetailFragment() {
         // Required empty public constructor
     }
-    public static HotelDetailFragment newInstance(Business hotel) {
-        HotelDetailFragment HotelDetailFragment = new HotelDetailFragment();
+    public static HotelDetailFragment newInstance(List<Business> hotel,Integer position) {
+        HotelDetailFragment hotelDetailFragment = new HotelDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("hotel", Parcels.wrap(hotel));
-        HotelDetailFragment.setArguments(args);
-        return HotelDetailFragment;
+
+        args.putParcelable(Constants.EXTRA_KEY_HOTELS, Parcels.wrap(hotel));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
+        hotelDetailFragment.setArguments(args);
+        return hotelDetailFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mHotel = Parcels.unwrap(getArguments().getParcelable("hotel"));
+            mHotel = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_HOTELS));
+            mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+            mHotel = mHotels.get(mPosition);
         }
-    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

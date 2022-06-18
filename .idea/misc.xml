@@ -10,6 +10,9 @@
         <entry key="app/src/main/res/drawable/view_bg.xml" value="0.146" />
         <entry key="app/src/main/res/layout-land/activity_hotel_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_saved_hotels.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/fragment_hotel_detail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/hotel_list_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/hotel_list_item_drag.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_create_account_activiy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_hotel_detail.xml" value="0.165" />
