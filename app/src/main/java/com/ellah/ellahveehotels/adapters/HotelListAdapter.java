@@ -19,24 +19,30 @@ import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.ui.HotelDetailActivity;
 import com.ellah.ellahveehotels.ui.HotelDetailFragment;
+import com.ellah.ellahveehotels.util.OnHotelSelectedListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcel;
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.HotelViewHolder> {
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
 
    private List<Business> mHotels;
    private Context mContext;
+   private OnHotelSelectedListener mOnHotelSelectedListener;
 
-    public HotelListAdapter(Context context, List<Business> hotels) {
+    public HotelListAdapter(Context context, List<Business> hotels,OnHotelSelectedListener hotelSelectedListener) {
         mHotels = hotels;
         mContext = context;
+        mOnHotelSelectedListener = hotelSelectedListener;
     }
 
     public class HotelViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -49,8 +55,10 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
 
         private Context mContext;
         private int mOrientation;
+        private List<Business> mHotels;
+        private OnHotelSelectedListener mHotelSelectedListener;
 
-        public HotelViewHolder(@NonNull View itemView) {
+        public HotelViewHolder(@NonNull View itemView,List<Business> hotels,OnHotelSelectedListener hotelSelectedListener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();//get the context of the itemView (the activity)
@@ -60,6 +68,10 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
 
             // Checks if the recorded orientation matches Android's landscape configuration.
             // if so, we create a new DetailFragment to display in our special landscape layout:
+
+            mHotels = hotels;
+            mHotelSelectedListener = hotelSelectedListener;
+
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE){
                 createDetailFragment(0);
             }
@@ -78,6 +90,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
         public void onClick(View view) {
             //detemines the position of the clicked hotel in the list:
             int itemPosition = getLayoutPosition();
+            mHotelSelectedListener.onHotelSelected(itemPosition,mHotels);
             if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 createDetailFragment(itemPosition);
             } else {
@@ -101,7 +114,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.Hote
     @Override
     public HotelListAdapter.HotelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotel_list_item, parent, false);
-        HotelViewHolder viewHolder = new HotelViewHolder(view);//viewHolder is the object that will be returned
+        HotelViewHolder viewHolder = new HotelViewHolder(view, mHotels, mOnHotelSelectedListener);//viewHolder is the object that will be returned
         return viewHolder;
     }
 

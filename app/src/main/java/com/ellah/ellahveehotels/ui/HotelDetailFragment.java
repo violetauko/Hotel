@@ -1,12 +1,17 @@
 package com.ellah.ellahveehotels.ui;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -53,6 +58,14 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     private Business mHotel;
     private List<Business> mHotels;
     private int mPosition;
+    private String mSource;
+
+
+//    private static final int REQUEST_IMAGE_CAPTURE = 111;
+//    private static final int CAMERA_PERMISSION_REQUEST_CODE = 11;
+//    private String currentPhotoPath;
+//    private static final String TAG = "image creation value";
+
 
     public HotelDetailFragment() {
         // Required empty public constructor
@@ -63,6 +76,7 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
 
         args.putParcelable(Constants.EXTRA_KEY_HOTELS, Parcels.wrap(hotel));
         args.putInt(Constants.EXTRA_KEY_POSITION, position);
+//        args.putString(Constants.KEY_SOURCE, source);
 
         hotelDetailFragment.setArguments(args);
         return hotelDetailFragment;
@@ -71,10 +85,51 @@ public class HotelDetailFragment extends Fragment implements View.OnClickListene
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            mHotel = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_HOTELS));
+            mHotels = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_HOTELS));
             mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
             mHotel = mHotels.get(mPosition);
-        }
+//        mSource = getArguments().getString(Constants.KEY_SOURCE);
+
+        setHasOptionsMenu(true);
+    }
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        if (mSource.equals(Constants.SOURCE_SAVED)) {
+//            inflater.inflate(R.menu.menu_photo, menu);
+//        } else {
+//            inflater.inflate(R.menu.menu_main, menu);
+//        }
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_photo:
+//                onLaunchCamera();
+//            default:
+//                break;
+//        }
+//        return false;
+//    }
+//
+//    public void onLaunchCamera() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//        }
+//    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == getActivity().RESULT_OK) {
+//            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            mImageLabel.setImageBitmap(imageBitmap);
+//            //      encodeBitmapAndSaveToFirebase(imageBitmap);
+//        }
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

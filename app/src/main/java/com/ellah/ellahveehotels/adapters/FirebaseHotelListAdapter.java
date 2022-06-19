@@ -3,13 +3,15 @@ package com.ellah.ellahveehotels.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,6 +32,7 @@ import com.google.firebase.database.Query;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,7 +41,7 @@ public class FirebaseHotelListAdapter extends FirebaseRecyclerAdapter<Business, 
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
     private int mOrientation;
-    List<Business> mHotels;
+    List<Business> mHotels = new ArrayList<>();
     private ChildEventListener mChildEventListener;
 
 

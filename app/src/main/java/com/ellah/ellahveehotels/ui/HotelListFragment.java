@@ -1,6 +1,7 @@
 package com.ellah.ellahveehotels.ui;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -24,6 +25,7 @@ import com.ellah.ellahveehotels.models.Business;
 import com.ellah.ellahveehotels.models.HotelSearchResponse;
 import com.ellah.ellahveehotels.network.BookingApi;
 import com.ellah.ellahveehotels.network.BookingClient;
+import com.ellah.ellahveehotels.util.OnHotelSelectedListener;
 
 import java.util.List;
 
@@ -34,14 +36,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HotelListFragment extends Fragment {
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentAddress;
     public List<Business> hotels;
     private HotelListAdapter mAdapter;
+    private OnHotelSelectedListener mOnHotelSelectedListener;
 
-    @BindView(R.id.recyclerView)
-    RecyclerView mRecyclerView;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mOnHotelSelectedListener = (OnHotelSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + e.getMessage());
+        }
+    }
 
     public HotelListFragment() {
         // Required empty public constructor
@@ -84,7 +98,7 @@ public class HotelListFragment extends Fragment {
 
                 if (response.isSuccessful()) {
                             hotels = response.body().getBusinesses();
-                            mAdapter = new HotelListAdapter(getActivity(), hotels);
+                            mAdapter = new HotelListAdapter(getActivity(), hotels, mOnHotelSelectedListener);
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
                             mRecyclerView.setLayoutManager(layoutManager);
@@ -112,13 +126,13 @@ public class HotelListFragment extends Fragment {
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String location) {
-                addToSharedPreferences(location);
-                getHotels(location);
+            public boolean onQueryTextSubmit(String s) {
+                addToSharedPreferences(s);
+                getHotels(s);
                 return false;
             }
             @Override
-            public boolean onQueryTextChange(String location) {
+            public boolean onQueryTextChange(String s) {
                 return false;
             }
         });

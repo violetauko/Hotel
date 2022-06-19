@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.ellah.ellahveehotels.Constants;
 import com.ellah.ellahveehotels.R;
 import com.ellah.ellahveehotels.adapters.HotelPagerAdapter;
 import com.ellah.ellahveehotels.models.Business;
@@ -29,8 +30,8 @@ public class HotelDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hotel_detail);
         ButterKnife.bind(this);
 
-        mHotels = Parcels.unwrap(getIntent().getParcelableExtra("hotels"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        mHotels = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_HOTELS));
+        int startingPosition = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
 
         adapterViewPager = new HotelPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mHotels);
         mViewPager.setAdapter(adapterViewPager);
