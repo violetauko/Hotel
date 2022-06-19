@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/aclonica</item>
         <item>@font/montserrat_alternates</item>
+        <item>@font/montserrat_alternates_black</item>
     </array>
 </resources>
